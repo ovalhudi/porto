@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Gallery Effect</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #ffc3a0, #ffafbd);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            width: 300px;
+        }
+        .profile-pic {
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+        h1 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+        p {
+            margin: 5px 0 20px;
+            color: #555;
+        }
+        .button {
+            display: block;
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            margin: 10px 0;
+            padding: 10px;
+            color: #333;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+        .button:hover {
+            background: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/profilicon.png" alt="Ema" class="profile-pic">
+        <h1>ARfilter</h1>
+        <p>Effect Gallery</p>
+        <a href="#" class="button">Tiktok Effect</a>
+       
+        <a href="#" class="button" onclick="redirectToNewPage()">Instagram Effect</a>
+
+        <script>
+          function redirectToNewPage() {
+            // Replace "instagrameffect_page.html" with the actual URL of the new page you want to redirect to
+            window.location.href = "instagrameffect_page.html";
+          }
+        </script>
+        <a href="https://api.whatsapp.com/send?phone=6281273137787&text=Hello%20there!" class="button">Whatsapp</a>
+       
+    </div>
+</body>
+</html>

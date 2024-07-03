@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Videos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="idData"></div>
+    <div id="loading" class="loading hidden">Loading...</div>
+    
+    <!-- <script src="script.js"></script> -->
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+
+    apiKey: "AIzaSyCE_9p8CoPJ65wabhH-ZWdAZ4DHx75G09M",
+  
+    authDomain: "porto-gallery.firebaseapp.com",
+  
+    projectId: "porto-gallery",
+  
+    storageBucket: "porto-gallery.appspot.com",
+  
+    messagingSenderId: "37204390245",
+  
+    appId: "1:37204390245:web:cfc26e30da3a2256e0b18c"
+  
+  };
+  
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore();
+
+let idData = document.getElementById("idData");
+let loading = document.getElementById("loading");
+
+let stdno = "1";
+
+function getStudent() {
+  const studentsRef = collection(db, "portofolio");
+  getDocs(studentsRef).then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+      AddStudentAsListItem(doc);
+    });
+    loadingElement.classList.add("hidden"); // Hide the loading element when data retrieval is complete
+  });
+}
+const loadingElement = document.getElementById("loading");
+  loadingElement.classList.remove("hidden");
+
+  function AddStudentAsListItem(doc) {
+  let data = doc.data();
+
+  let videoContainer = document.createElement("div");
+  videoContainer.classList.add("video-container");
+
+  let videoElement = document.createElement("video");
+  videoElement.src = data.fileUrl; // Set the coverUrl as the src of the video element
+  videoElement.controls = true;
+
+  let videoTitle = document.createElement("h2");
+  videoTitle.innerText = data.judul;
+
+  let videoDescription = document.createElement("p");
+  videoDescription.innerText = data.deskripsi;
+
+  videoContainer.append(videoElement);
+  videoContainer.append(videoTitle, videoDescription);
+  idData.append(videoContainer);
+  stdno++;
+}
+
+window.addEventListener("load", getStudent);
+</script> 
+</body>
+</html>
