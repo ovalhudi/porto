@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio </title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body >
+    <div id="idData">
+    <div id="titleApp" class="headerapptiktok">Tiktok Effect</div>
+  </div>
+    <div id="loading" class="loading hidden">Loading...</div>
+    
+    <!-- <script src="script.js"></script> -->
+
+ <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    import { getStorage, ref, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+
+    const firebaseConfig = {
+        apiKey: "AIzaSyCE_9p8CoPJ65wabhH-ZWdAZ4DHx75G09M",
+        authDomain: "porto-gallery.firebaseapp.com",
+        projectId: "porto-gallery",
+        storageBucket: "porto-gallery.appspot.com",
+        messagingSenderId: "37204390245",
+        appId: "1:37204390245:web:cfc26e30da3a2256e0b18c"
+      };
+
+      const app = initializeApp(firebaseConfig);
+        const db = getFirestore();
+        const storage = getStorage();
+
+        let idData = document.getElementById("idData");
+        let loading = document.getElementById("loading");
+
+        function getStudent() {
+            const studentsRef = collection(db, "portofolio");
+            getDocs(studentsRef)
+                .then((querySnapshot) => {
+                    const filteredDocs = querySnapshot.docs.filter(
+                        (doc) => doc.data().platform === "tiktok"
+                    );
+                    filteredDocs.forEach((doc) => {
+                        AddStudentAsListItem(doc);
+                    });
+                    loadingElement.classList.add("hidden");
+                    titleAppElement.classList.add("visible");
+                    idData.classList.add("visible");
+                })
+                .catch((error) => {
+                    console.error("Error getting documents: ", error);
+                });
+        }
+
+        const loadingElement = document.getElementById("loading");
+        loadingElement.classList.remove("hidden");
+
+        const titleAppElement = document.getElementById("titleApp");
+        titleAppElement.classList.remove("visible");
+
+        const idDataElement = document.getElementById("idData");
+        idDataElement.classList.remove("visible");
+
+        async function getImageUrl(coverUrl) {
+            try {
+                const imageUrl = await getDownloadURL(ref(storage, `covers/${coverUrl}`));
+                return imageUrl;
+            } catch (error) {
+                console.error("Error getting image URL:", error);
+                return null;
+            }
+        }
+
+        function AddStudentAsListItem(doc) {
+            let data = doc.data();
+
+            let videoContainer = document.createElement("div");
+            videoContainer.classList.add("video-container");
+
+           
+
+            let videoElement = document.createElement("video");
+            videoElement.src = data.fileUrl; // Set the fileUrl as the src of the video element
+            videoElement.controls = true;
+            videoElement.setAttribute("playsinline", ""); // Ensure video plays inline
+
+            if (data.coverUrl) {
+                getImageUrl(data.coverUrl).then((imageUrl) => {
+                    videoElement.poster = imageUrl; // Set the fetched image URL as the poster of the video element
+                }).catch((error) => {
+                    console.warn("Error fetching image URL:", error);
+                });
+            } else {
+                console.warn("No coverUrl found for document:", doc.id);
+            }
+
+            let videoTitle = document.createElement("h2");
+            videoTitle.innerText = data.judul;
+
+            let videoDescription = document.createElement("p");
+            videoDescription.innerText = data.deskripsi;
+
+            let textContainer = document.createElement("div");
+            textContainer.classList.add("text-container");
+            textContainer.append(videoTitle, videoDescription);
+
+            
+            videoContainer.append(videoElement);
+            videoContainer.append(textContainer);
+            idData.append(videoContainer);
+        }
+
+        window.addEventListener("load", getStudent);
+    </script>
+</body>
+</html>
