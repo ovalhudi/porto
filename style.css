@@ -2,14 +2,13 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   background: linear-gradient(135deg, #a0ecff, #c4afff);
   border-radius: 10px;
   text-align: center;
   width: auto;
   max-width: 500px; 
   padding-right: 0px;
-  
   
   
   
@@ -70,14 +69,12 @@
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #ffc3a0, #ffafbd,#ffc3a0, #ffafbd);
-  display: fit-content;
+  display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: 0px;
-  margin-right: 0px;
   padding-right: 0px; 
- 
-
+  margin: 0;
+  min-height: 100vh;
 }
 
 .loading {
@@ -95,9 +92,7 @@ body {
   display: none;
 }
 
-.video-container {
-  margin-bottom: 20px;
-}
+
 .canvas-preview {
   cursor: pointer;
   width: 100%;
@@ -111,14 +106,7 @@ body {
 
  
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  font-family: Arial, sans-serif;
-}
+
 
 #idData {
   max-width: 1200px; /* Maksimal lebar untuk layar desktop */
