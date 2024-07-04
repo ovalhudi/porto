@@ -7,7 +7,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #ffc3a0, #ffafbd);
+            background: linear-gradient(135deg, #ffc3a0, #ffafbd, #ffc3a0, #ffafbd);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -55,12 +55,17 @@
         <img src="assets/profilicon.png" alt="Ema" class="profile-pic">
         <h1>ARfilter</h1>
         <p>Effect Gallery</p>
-        <a href="#" class="button">Tiktok Effect</a>
-       
-        <a href="#" class="button" onclick="redirectToNewPage()">Instagram Effect</a>
+        <a href="#" class="button" onclick="redirectToTiktokPage()">Tiktok Effect</a>
+        <script>
+            function redirectToTiktokPage() {
+              // Replace "instagrameffect_page.html" with the actual URL of the new page you want to redirect to
+              window.location.href = "tiktok_page.html";
+            }
+          </script>
+        <a href="#" class="button" onclick="redirectToInstagramPage()">Instagram Effect</a>
 
         <script>
-          function redirectToNewPage() {
+          function redirectToInstagramPage() {
             // Replace "instagrameffect_page.html" with the actual URL of the new page you want to redirect to
             window.location.href = "instagrameffect_page.html";
           }
