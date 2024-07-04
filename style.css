@@ -1,43 +1,83 @@
 .video-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  margin-bottom: 20px;
-  background: rgba(255, 255, 255, 0.8);
-  border-radius: 20px;
-  padding: 20px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, #a0ecff, #c4afff);
+  border-radius: 10px;
   text-align: center;
-  width: 300px;
+  width: auto;
+  max-width: 500px; 
+  padding-right: 0px;
+  
+  
+  
+  
   
 }
 
-.video-container video {
-  width: 100%;
-  max-width: 500px;
-  height: auto;
+ .video-container video {
+  margin: 10px; 
+  width: auto;
+  max-width:fit-content;
+  height: 250px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.video{
+  
+  height: 100%;
+  object-fit: cover;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 .video-container h2 {
   margin-top: 10px;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
 .video-container p {
-  margin-top: 5px;
-  font-size: 14px;
+  line-height: normal;
+  font-size: 13px;
+  text-transform: uppercase;
+  padding: 10px;
+}
+
+.text-container {
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.096);
+  border-radius: 10px;
+}
+
+.video-container  :hover {
+  transform: scale(1.05);
+  transition: transform 0.2s  ease-in-out;
 }
 
 body {
   font-family: Arial, sans-serif;
-  background: linear-gradient(135deg, #ffc3a0, #ffafbd);
-  display: flex;
+  background: linear-gradient(135deg, #ffc3a0, #ffafbd,#ffc3a0, #ffafbd);
+  display: fit-content;
   justify-content: center;
   align-items: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-right: 0px; 
  
-  margin: 10;
+
 }
 
 .loading {
@@ -46,8 +86,70 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .hidden {
   display: none;
 }
+
+.video-container {
+  margin-bottom: 20px;
+}
+.canvas-preview {
+  cursor: pointer;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+ 
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+#idData {
+  max-width: 1200px; /* Maksimal lebar untuk layar desktop */
+  padding: 10px;
+  box-sizing: border-box;
+ 
+}
+
+
+.headerapp {
+  color: white;
+  text-align:center;
+  font-size: 24px;
+  margin-bottom: 15px;
+  visibility: hidden;
+  background:  linear-gradient(165deg, #FFBC00,#fd02adc4, #A507F1 );
+  padding: 15px;
+  border-radius: 5px;
+  
+}
+
+.headerapptiktok{
+  color: white;
+  text-align:center;
+  font-size: 24px;
+  margin-bottom: 15px;
+  visibility: hidden;
+  background:  linear-gradient(165deg,  #22f5eee7, rgba(0, 0, 0, 0.767),  #fd2b55ea);
+  padding: 15px;
+  border-radius: 5px;
+}
+
+.visible {visibility: visible;};
+
